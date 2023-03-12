@@ -20,4 +20,12 @@ public class TravelAgency
 
         account.Money -= distance * 10 * ship.ShipWeight;
     }
+
+    public double PriceForTravel(Planet p1, Planet p2, PlanetarySystem system, SpaceShip ship)
+    {
+        var distance = Math.Abs(system[p1] - system[p2]);
+
+        return distance * CostPerAu * ship.ShipWeight;
+    }
+    
 }

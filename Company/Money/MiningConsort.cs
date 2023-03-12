@@ -38,4 +38,25 @@ public class MiningConsort
         account.Money -= cost;
         spaceShip.Collect(planet.Harvest());
     }
+
+    public double PriceForMining(SpaceShip spaceShip)
+    {
+        double cost;
+        switch (spaceShip.Template)
+        {
+            case SpaceShipTemplate.Light:
+                cost = CostForLightShip;
+                break;
+            case SpaceShipTemplate.Standard:
+                cost = CostForStandardShip;
+                break;
+            case SpaceShipTemplate.Heavy:
+                cost = CostForHeavyShip;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        return cost;
+    }
 }
