@@ -18,6 +18,8 @@ public class Planet
 
     private Queue<Resource> _resources;
 
+    public bool HasResources => _resources.Any();
+
     public Planet()
     {
         _isScan = false;
