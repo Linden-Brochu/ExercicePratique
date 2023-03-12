@@ -28,7 +28,7 @@ public class Shop
 
     public void SellResource(Account account, SpaceShip spaceShip)
     {
-        account.Money += spaceShip.Take().SpaceTaken * 5;
+        account.Money += spaceShip.Take().SpaceTaken * 50;
     }
 
     public Account StartBusiness()

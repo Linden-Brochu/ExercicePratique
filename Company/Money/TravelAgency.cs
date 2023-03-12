@@ -13,7 +13,7 @@ public class TravelAgency
 
         if (account.Money < distance * 10 * ship.ShipWeight)
         {
-            throw new CannotTravelException();
+            throw new NotEnoughMoneyException();
         }
 
         account.Money -= distance * 10 * ship.ShipWeight;

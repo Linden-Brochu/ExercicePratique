@@ -38,7 +38,7 @@ public class Planet
         }
 
         _isScan = true;
-        _resources = ResourceFactory.Generate(30);
+        _resources = ResourceFactory.Generate(100);
     }
 
     public Resource Harvest()
