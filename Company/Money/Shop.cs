@@ -5,18 +5,26 @@ namespace Company.Money;
 
 public class Shop
 {
-    private static readonly Dictionary<SpaceShipTemplate, double> prices = new()
+    public static readonly Dictionary<SpaceShipTemplate, double> Prices = new()
     {
-        [SpaceShipTemplate.Light] = 1000,
-        [SpaceShipTemplate.Standard] = 2000,
-        [SpaceShipTemplate.Heavy] = 3000,
+        [SpaceShipTemplate.Light] = PriceForLight,
+        [SpaceShipTemplate.Standard] = PriceForStandard,
+        [SpaceShipTemplate.Heavy] = PriceForHeavy
     };
 
+    public const double StartingMoney = 10000d;
+    
+    public const double PriceForLight = 1000d;
+    public const double PriceForStandard = 2000d;
+    public const double PriceForHeavy = 3000d;
+
+    public const double PricePerResource = 50d;
+    
     public static readonly Shop TheOneAndOnlyShop = new();
 
     public SpaceShip Buy(Account account, SpaceShipTemplate template)
     {
-        var price = prices[template];
+        var price = Prices[template];
         if (account.Money < price)
         {
             throw new NotEnoughMoneyException();
@@ -28,14 +36,14 @@ public class Shop
 
     public void SellResource(Account account, SpaceShip spaceShip)
     {
-        account.Money += spaceShip.Take().SpaceTaken * 50;
+        account.Money += spaceShip.Take().SpaceTaken * PricePerResource;
     }
 
     public Account StartBusiness()
     {
-        return new Account()
+        return new Account
         {
-            Money = 10000
+            Money = StartingMoney
         };
     }
 }

@@ -10,12 +10,17 @@ public partial class SpaceShip
 
     private readonly double _shipWeight;
 
-    public double ShipWeight => _shipWeight + _resourcesSout.Sum(r => r.SpaceTaken * 10);
+    public double ShipWeight => _shipWeight + _resourcesSout.Sum(r => r.SpaceTaken * Resource.WeightPerResource);
 
     private Stack<Resource> _resourcesSout;
 
+    private SpaceShipTemplate _template;
+
+    public SpaceShipTemplate Template => _template;
+
     public SpaceShip(SpaceShipTemplate template) : this()
     {
+        this._template = template;
         switch(template)
         {
             case SpaceShipTemplate.Light:
@@ -35,10 +40,11 @@ public partial class SpaceShip
         }
     }
 
-    internal SpaceShip(double initialCargoSpace, double shipWeight) : this()
+    internal SpaceShip(double initialCargoSpace, double shipWeight, SpaceShipTemplate template) : this()
     {
         _initialCargoSpace = initialCargoSpace;
         _shipWeight = shipWeight;
+        _template = template;
     }
 
     private SpaceShip()
