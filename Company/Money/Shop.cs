@@ -12,7 +12,7 @@ public class Shop
         [SpaceShipTemplate.Heavy] = PriceForHeavy
     };
 
-    public const double StartingMoney = 10000d;
+    public const double StartingMoney = 200000d;
     
     public const double PriceForLight = 1000d;
     public const double PriceForStandard = 2000d;
@@ -37,6 +37,11 @@ public class Shop
     public void SellResource(Account account, SpaceShip spaceShip)
     {
         account.Money += spaceShip.Take().SpaceTaken * PricePerResource;
+    }
+
+    public double PlanForSell(double space)
+    {
+        return space * PricePerResource;
     }
 
     public Account StartBusiness()

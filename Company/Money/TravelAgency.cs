@@ -7,7 +7,7 @@ public class TravelAgency
 {
     public static readonly TravelAgency Agency = new();
 
-    public const double CostPerAu = 10d;
+    public const double CostPerAu = 5/100d;
     
     public void Travel(Account account, Planet p1, Planet p2, PlanetarySystem system, SpaceShip ship)
     {
@@ -18,14 +18,14 @@ public class TravelAgency
             throw new NotEnoughMoneyException();
         }
 
-        account.Money -= distance * 10 * ship.ShipWeight;
+        account.Money -= distance * CostPerAu * ship.ShipWeight;
     }
 
-    public double PriceForTravel(Planet p1, Planet p2, PlanetarySystem system, SpaceShip ship)
+    public double PriceForTravel(Planet p1, Planet p2, PlanetarySystem system, SpaceShip ship, double extraSpace = 0d)
     {
         var distance = Math.Abs(system[p1] - system[p2]);
 
-        return distance * CostPerAu * ship.ShipWeight;
+        return distance * CostPerAu * (ship.ShipWeight + Resource.WeightPerResource * extraSpace);
     }
     
 }

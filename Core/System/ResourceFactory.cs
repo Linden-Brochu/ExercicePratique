@@ -11,7 +11,7 @@ internal class ResourceFactory
             resources.Enqueue(new Resource
             {
                 Name = "Piment jalapeno super spicy 2000 pro gamer rgb 360 no scope 'I fucked your mom yesterday'",
-                SpaceTaken = quantityOfResource - i + 1,
+                SpaceTaken = quantityOfResource - i,
             });
         }
         
